@@ -2,42 +2,10 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!--<script src="script.js"></script>  -->
+<script src="script.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <script>
-    var randomurl = "https://en.wikipedia.org/wiki/Special:Random";
-var searchvariable, searchurl;
-
-function getjson() {
-  searchvariable = $('input').val()
-//  console.log(searchvariable);
-  searchurl =
-    "https://en.wikipedia.org/w/api.php?action=query&list=search&origin=*&srsearch=" + searchvariable + "&format=json&utf8=";
-  
-  $.getJSON(searchurl, function(a) {
-    // iterate over each element in the array
- //   console.log(searchurl)
- //   console.log(a);
-    $("#results").html("");
-    for (var i=0; i < a.query.search.length; i++) {
-      //console.log(a.query.search[i].title);
-      //console.log(a.query.search[i].snippet);
-      $("#results").append("<a target=\"blank\" href=\"http://en.wikipedia.org/?curid=" + a.query.search[i].pageid + "\" class=\"list-group-item list-group-item-action\"><kbd style=\"background-color:#6c757d;t\">" + a.query.search[i].title + "</kbd> " + "<span class=\"badge badge-primary badge-pill\">" + a.query.search[i].wordcount + "</span> " + a.query.search[i].snippet + "</a>");
-    }
-  });
-}
-
-$(document).ready(function() {
-});
-
-
-$("#myForm").submit(function( event ) {
-  getjson();
-  event.preventDefault();
-});
-  </script>
 <nav class="navbar navbar-dark justify-content-between" style="background-color: #E5E5FF;">
   <a class="navbar-brand">Wikipedia Searcher</a>
   <form id="myForm" class="form-inline">
